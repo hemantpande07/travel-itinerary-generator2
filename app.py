@@ -22,7 +22,8 @@ app = Flask(__name__)
 app.secret_key = secret_key
 
 # Initialize database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///database.db')
+
 db = SQLAlchemy(app)
 
 # Initialize sitemapper
